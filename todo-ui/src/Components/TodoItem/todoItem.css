@@ -1,0 +1,16 @@
+.list__item {
+    border: 1px solid #a8a6a6;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 10px;
+    position: relative;
+}
+
+.list__detail {
+    position: absolute;
+    right: 10px;
+}
+
+.list__item_line-through {
+    text-decoration: line-through;
+}

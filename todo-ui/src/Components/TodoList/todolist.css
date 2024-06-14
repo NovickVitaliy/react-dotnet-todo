@@ -1,0 +1,20 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.todos {
+    width: 75%;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.title {
+    margin:0;
+}
