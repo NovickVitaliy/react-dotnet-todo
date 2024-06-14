@@ -7,9 +7,9 @@ function App() {
     const todosKey = 'todos';
     const [todos, setTodos] = useState([]);
     const handleClick = (todo) => {
-        setTodos(arr => [...arr, todo]);
-        const todosToStore = JSON.stringify([...todos, todo]);
-        localStorage.setItem(todosKey, todosToStore);
+        const updatedTodos = [...todos, todo];
+        setTodos(updatedTodos);
+        localStorage.setItem(todosKey, JSON.stringify(updatedTodos));
     }
 
     const handleCheck = (todoId) => {
