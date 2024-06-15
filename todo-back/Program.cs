@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using todo_back.Data;
+using todo_back.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,5 +17,7 @@ builder.Services.AddDbContext<TodoDbContext>(opt => {
 });
 
 var app = builder.Build();
+
+app.UseTodoEndpoints();
 
 app.Run();
