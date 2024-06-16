@@ -27,14 +27,13 @@ function App() {
         setTodos(updatedTodos);
     }
 
-    const handleCheck = (todoId) => {
-        const todoToUpdate = todos.filter(x => x.id === todoId)[0];
+    const handleUpdate = (todoId, name, done) => {
         const updatedTodos = todos.map(t =>
-            t.id === todoId ? { ...t, done: !t.done } : t
+            t.id === todoId ? { ...t, done: done, task: name } : t
         );
         axios.put(`${API_ENDPOINTS.TODOS}/${todoId}`, {
-            done: !todoToUpdate.done,
-            task: todoToUpdate.task
+            done: done,
+            task: name
         })
             .then(() => {
 
@@ -56,6 +55,23 @@ function App() {
             });
     }
 
+    const handleSelect = (sortBy) => {
+        let sortedTodos = [];
+        switch (sortBy){
+            case "name":
+                sortedTodos = [...todos].sort((a, b) => a.task.localeCompare(b.task));
+                break;
+            case "created":
+                sortedTodos = [...todos].sort((a,b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+                break;
+            case "done":
+                sortedTodos = [...todos].sort((a,b) => a.done - b.done);
+                break;
+        }
+        console.log(sortedTodos);
+        setTodos(sortedTodos);
+    };
+
     useEffect(() => {
         axios.get(API_ENDPOINTS.TODOS)
             .then(response => {
@@ -72,7 +88,7 @@ function App() {
             <Prompt onClick={handleClick}/>
             {isLoading
                 ? <div className='loader'><span>Loading...</span><FontAwesomeIcon icon={"spinner"} spin /></div>
-                : <TodoList todos={todos} handleCheck={handleCheck} handleDelete={handleDelete}/>}
+                : <TodoList todos={todos} handleUpdate={handleUpdate} handleDelete={handleDelete} handleSelect={handleSelect}/>}
 
         </>
     );

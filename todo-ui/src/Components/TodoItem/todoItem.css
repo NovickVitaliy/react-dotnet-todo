@@ -4,6 +4,8 @@
     padding: 5px;
     margin: 10px;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .list__detail {
@@ -13,4 +15,11 @@
 
 .list__item_line-through {
     text-decoration: line-through;
+}
+
+.list__update-input {
+    display: flex;
+    font-size: 15px;
+    border: none;
+    font-weight: lighter;
 }
