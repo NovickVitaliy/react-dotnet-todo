@@ -1,6 +1,6 @@
 namespace todo_back.Dto;
 
 public record UpdateTodoRequest(
-        string Name,
+        string Task,
         bool Done
     );

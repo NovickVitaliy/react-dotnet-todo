@@ -22,7 +22,7 @@ public static class WebApplicationExtensions {
             [FromServices] TodoDbContext db) => {
             var todo = new Todo() {
                 Done = false,
-                Name = req.Name,
+                Task = req.Task,
                 CreatedAt = req.CreatedAt
             };
 
@@ -69,7 +69,7 @@ public static class WebApplicationExtensions {
                     return Results.NotFound();
                 }
 
-                todo.Name = req.Name;
+                todo.Task = req.Task;
                 todo.Done = req.Done;
 
                 db.Todos.Update(todo);

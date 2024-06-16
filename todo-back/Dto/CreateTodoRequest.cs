@@ -1,5 +1,5 @@
 namespace todo_back.Dto;
 
 public record CreateTodoRequest(
-    string Name,
+    string Task,
     DateTime CreatedAt);

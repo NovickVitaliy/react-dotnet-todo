@@ -8,8 +8,7 @@ builder.Services.AddCors(options => {
     options.AddDefaultPolicy(policyBuilder => policyBuilder
         .AllowAnyOrigin()
         .AllowAnyMethod()
-        .AllowCredentials()
-        .AllowCredentials());
+        .AllowAnyHeader());
 });
 
 builder.Services.AddDbContext<TodoDbContext>(opt => {
@@ -17,6 +16,8 @@ builder.Services.AddDbContext<TodoDbContext>(opt => {
 });
 
 var app = builder.Build();
+
+app.UseCors();
 
 app.UseTodoEndpoints();
 
